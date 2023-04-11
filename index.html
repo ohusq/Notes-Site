@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Website</title>
+</head>
+<body>
+	<h1 id="displayText">Text File Creator</h1>
+	<input id="nameBox" placeholder="File Name">
+	<textarea id="inputBox" placeholder="Input Here"></textarea>
+
+	<button onclick="myFunction()">Save File</button>
+
+	<script>
+		// Create a function to save the file
+		function myFunction() {
+			function saveAs(filename, text) {
+				var element = document.createElement('a');
+				element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+				element.setAttribute('download', filename);
+
+				element.style.display = 'none';
+				document.body.appendChild(element);
+
+				element.click();
+
+				document.body.removeChild(element);
+			}
+
+			// Get the text from the textbox
+			var text = document.getElementById("inputBox").value;
+			// Get the file name from the textbox
+			var filename = document.getElementById("nameBox").value;
+
+			// Save the file
+			saveAs(filename, text);
+		}
+	</script>
+
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,900&display=swap');
+
+		body {
+			background-color: #000;
+			color: #fff;
+			font-family: 'Lato', sans-serif;
+		}
+
+		#inputBox {
+			padding: 2px;
+			margin: 2px;
+			margin-left: auto;
+			width: 100%;
+			height: 100px;
+		}
+		#nameBox {
+			padding: 2px;
+			margin: 2px;
+			margin-left: auto;
+			width: 25%;
+		}
+
+		#displayText {
+			margin: 2px;
+			margin-left: auto;
+			width: 100%;
+			text-align: right;
+		}
+	</style>
+</body>
+</html>

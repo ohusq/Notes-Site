@@ -2,6 +2,7 @@
 
 const express = require('express');
 const app = express();
+app.disable('x-powered-by');
 
 // Make a router
 const router = express.Router();
